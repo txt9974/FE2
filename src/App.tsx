@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import { Infor } from "./interfaces/infor";
-import instance from "./axios/axios";
 import { Link, Route, Routes } from "react-router-dom";
+import "./App.css";
+import instance from "./axios/axios";
 import Home from "./pages/Home";
 
 function App() {
