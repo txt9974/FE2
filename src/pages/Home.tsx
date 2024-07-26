@@ -1,46 +1,24 @@
-import { Products } from "../interfaces/Products";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ProdContext } from "../contexts/Products";
 
-type Props = {
-  products: Products[];
-  onDel: (id: number) => void;
-};
+const Home = () => {
+  const { state } = useContext(ProdContext);
 
-const Home = ({ products, onDel }: Props) => {
-  const Del = (id: number) => {
-    onDel(id);
-  };
   return (
     <div>
-      <h1>Danh sach</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Thumbnail</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((i) => (
-            <tr key={i.id}>
-              <td>{i.id}</td>
-              <td>{i.title}</td>
-              <td>{i.price}</td>
-              <td>{i.description}</td>
-              <td>
-                <img className="h-10 w-10" src={i.thumbnail} alt="" />
-              </td>
-              <td>
-                <button onClick={() => Del(i.id)}>Del</button>
-                <button>Edit</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {state.products.map((i) => (
+        <div key={i._id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div className="card">
+            <img src={i.thumbnail} className="card-img-top" alt={i.title} />
+            <div className="card-body">
+              <h5 className="card-title">{i.title}</h5>
+              <p className="card-text">${i.price}</p>
+              <Link to={`/detail/${i._id}`}>Details</Link>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,13 +1,9 @@
 export interface Products {
-  id: number;
+  _id?: string | number | undefined;
+  id?: number | string | undefined;
   title: string;
-  description: string;
-  category: string;
+  description?: string;
   price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  brand: string;
-  thumbnail: string;
+  thumbnail?: string;
+  qty?: number;
 }
